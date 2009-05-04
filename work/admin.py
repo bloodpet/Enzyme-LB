@@ -12,4 +12,3 @@ class WorkAdmin(admin.ModelAdmin):
 
 admin.site.register(models.WorkList, WorkAdmin)
 
-

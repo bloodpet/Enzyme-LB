@@ -13,7 +13,7 @@ class WorkUpload(models.Model):
     work_list = models.ForeignKey(WorkList)
     title = models.CharField(max_length=128)
     # File
-    work_upload = models.FileField(upload_to='work_upload')
+    work_upload = models.FileField(upload_to='media/work')
     is_video = models.BooleanField(default=False)
 
     def __unicode__(self):
