@@ -27,5 +27,7 @@ urlpatterns = patterns('',
     (r'^work/([^/]+)/$', 'laurenbrincat.work.views.page_list'),
     (r'^work/([^/]+)/list$', 'laurenbrincat.work.views.page_list'),
     (r'^work/([^/]+)/(\d+)/$', 'laurenbrincat.work.views.page_detail'),
+    (r'^biography/$', 'laurenbrincat.biography.views.index'),
+    (r'^biography/exhibition/$', 'laurenbrincat.biography.views.exhibition'),
 
 )
