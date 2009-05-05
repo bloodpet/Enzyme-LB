@@ -147,3 +147,15 @@ function get_biography() {
     get_education();
 }
 
+function get_upcoming() {
+    var container = $('div#content_div');
+    url = '/upcoming/';
+    $.get(url, function (data) {
+        container.html(data);
+    });
+}
+
+function get_contact() {
+    alert('Contact page coming up');
+}
+
