@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<!--
+base.html - Base template for the Lauren Brincat Django Project
+
+AUTHOR: Emanuel Gardaya Calso <egcalso@gmail.com>
+
+Modification Dates:
+    2009-05-02
+
+
+Copyright (C) 2008 Emanuel Calso <egcalso [at] gmail.com>
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+-->
+<html>
+<head>
+    <title>
+    {% block title %}
+        {% if title_name %}
+        {{ title_name }} |
+        {% endif %}
+        {% if title_part %}
+        {{ title_part }} |
+        {% endif %}
+        Lauren Brincat
+    {% endblock %}
+    </title>
+    <link type="text/css" rel="stylesheet" href="/media/css/default.css" />
+    <script type="text/javascript" language="javascript" src="/media/js/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="/media/js/page.js"></script>
+</head>
+
+<body>
+
+<table id="main_table">
+
+<tr>
+<td colspan="3" id="content_cell">
+<div id="content_div">
+{% block sample %}
+Welcome to LaurenBrincat.com
+{% endblock %}
+</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div id="work_list">
+{% block work_list %}
+{% endblock %}
+</div>
+</td>
+
+<td id="info_cell">
+<div id="info_div">
+    <div id="copyright">
+    </div>
+    <div id="pagination">
+    </div>
+</div>
+</td>
+
+<td>
+<div id="main_nav">
+<ul>
+<li>
+<a href="/biography">biography</a>
+</li>
+<li>
+<a href="/upcoming">upcoming</a>
+</li>
+<li>
+<a href="/contact">contact</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
+

@@ -1,0 +1,41 @@
+
+.selected {
+    font-weight: bold;
+}
+
+
+table#main_table {
+    width: 100%;
+}
+table#main_table td {
+}
+table#main_table td#content_cell {
+    height: 480px;
+}
+table#main_table td#content_cell div#content_div {
+    text-align: center;
+    /*vertical-align: center;*/
+}
+table#main_table td#info_cell {
+    margin: 0px auto 0px auto;
+    width: 50%;
+}
+table#main_table td div#info_div {
+    margin: 0px auto 0px auto;
+}
+
+div#work_list {
+    height: 92px;
+    overflow: auto;
+}
+
+div#pagination {
+    vertical-align: center;
+    text-align: center;
+}
+
+div#copyright {
+    vertical-align: center;
+    text-align: center;
+}
+

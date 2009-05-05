@@ -18,4 +18,14 @@ urlpatterns = patterns('',
     # Static route
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/home/egcalso/Work/EnzymeIT/LaurenBrincat/laurenbrincat/media/'}),
 
+    # Custom routes
+    #(r'^(.*)', 'laurenbrincat.work.views.index'),
+    (r'^$', 'laurenbrincat.work.views.index'),
+    (r'^work/$', 'laurenbrincat.work.views.index'),
+    (r'^work/([^/]+)$', 'laurenbrincat.work.views.work_list'),
+    (r'^work/list$', 'laurenbrincat.work.views.work_list'),
+    (r'^work/([^/]+)/$', 'laurenbrincat.work.views.page_list'),
+    (r'^work/([^/]+)/list$', 'laurenbrincat.work.views.page_list'),
+    (r'^work/([^/]+)/(\d+)/$', 'laurenbrincat.work.views.page_detail'),
+
 )
