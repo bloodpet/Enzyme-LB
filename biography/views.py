@@ -15,17 +15,48 @@ def index(request):
             ),
         )
 
+def award(request):
+    details = {}
+    for entry in Award.objects.all():
+        try:
+            details[entry.year]
+        except KeyError:
+            details[entry.year] = []
+        finally:
+            details[entry.year].append(dict(award=entry.award, location=entry.location))
+    years = details.keys()
+    years.sort()
+    years.reverse()
+    json = simplejson.dumps(dict(years=years, details=details))
+    return HttpResponse(json, mimetype='application/json')
+
+def education(request):
+    details = {}
+    for entry in Education.objects.all():
+        try:
+            details[entry.years_taken]
+        except KeyError:
+            details[entry.years_taken] = []
+        finally:
+            details[entry.years_taken].append(dict(course=entry.course, location=entry.location))
+    years = details.keys()
+    years.sort()
+    years.reverse()
+    json = simplejson.dumps(dict(years=years, details=details))
+    return HttpResponse(json, mimetype='application/json')
+
 def exhibition(request):
     details = {}
-    years = set([])
     for entry in Exhibition.objects.all():
-        years.add(entry.year)
         try:
             details[entry.year]
         except KeyError:
             details[entry.year] = []
         finally:
             details[entry.year].append(entry.details)
-    json = simplejson.dumps(dict(years=list(years), details=details))
+    years = details.keys()
+    years.sort()
+    years.reverse()
+    json = simplejson.dumps(dict(years=years, details=details))
     return HttpResponse(json, mimetype='application/json')
 

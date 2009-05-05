@@ -3,7 +3,6 @@
     font-weight: bold;
 }
 
-
 table#main_table {
     width: 100%;
 }
@@ -37,5 +36,32 @@ div#pagination {
 div#copyright {
     vertical-align: center;
     text-align: center;
+}
+
+div#content_div div {
+    text-align: left;
+}
+
+div#content_div div#exhibition {
+    float: left;
+    height: 480px;
+    overflow: auto;
+    text-align: left;
+}
+
+div#content_div div#education {
+    clear: right;
+    float: right;
+    height: 220px;
+    overflow: auto;
+    text-align: left;
+}
+
+div#content_div div#award {
+    clear: right;
+    float: right;
+    height: 220px;
+    overflow: auto;
+    text-align: left;
 }
 

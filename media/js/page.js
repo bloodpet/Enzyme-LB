@@ -73,12 +73,46 @@ function get_work(name) {
 function get_award() {
     url = '/biography/award';
     $.getJSON(url, function (data) {
+        var container = $('div#content_div');
+        var content = $('<div id="award"></div>');
+        content.append('<h3>Award</h3>');
+        var details = data.details;
+        var y = data.years;
+        var yLen = y.length
+        for (var cnt=0; cnt<yLen; ++cnt) {
+            content.append('<h4>' + y[cnt] + '</h4>');
+            var ul = $('<ul></ul>');
+            var d = details[y[cnt]];
+            var dLen = d.length
+            for (var dcnt=0; dcnt<dLen; ++dcnt) {
+                ul.append('<li>' + d[dcnt].award + ' at ' + d[dcnt].location + '</li>');
+            }
+            content.append(ul);
+        }
+        container.append(content);
     });
 }
 
 function get_education() {
     url = '/biography/education';
     $.getJSON(url, function (data) {
+        var container = $('div#content_div');
+        var content = $('<div id="education"></div>');
+        content.append('<h3>Education</h3>');
+        var details = data.details;
+        var y = data.years;
+        var yLen = y.length
+        for (var cnt=0; cnt<yLen; ++cnt) {
+            content.append('<h4>' + y[cnt] + '</h4>');
+            var ul = $('<ul></ul>');
+            var d = details[y[cnt]];
+            var dLen = d.length
+            for (var dcnt=0; dcnt<dLen; ++dcnt) {
+                ul.append('<li>' + d[dcnt].course + ' at ' + d[dcnt].location + '</li>');
+            }
+            content.append(ul);
+        }
+        container.append(content);
     });
 }
 
@@ -86,27 +120,30 @@ function get_exhibition() {
     url = '/biography/exhibition';
     $.getJSON(url, function (data) {
         var container = $('div#content_div');
-        var ul = $('<ul></ul>');
+        var content = $('<div id="exhibition"></div>');
+        content.append('<h3>Exhibition</h3>');
         var details = data.details;
         var y = data.years;
         var yLen = y.length
         for (var cnt=0; cnt<yLen; ++cnt) {
-            ul.append('<li>' + y[cnt] + '</li>');
+            content.append('<h4>' + y[cnt] + '</h4>');
+            var ul = $('<ul></ul>');
             var d = details[y[cnt]];
             var dLen = d.length
             for (var dcnt=0; dcnt<dLen; ++dcnt) {
                 ul.append('<li>' + d[dcnt] + '</li>');
             }
+            content.append(ul);
         }
-        container.html(ul);
-        alert('done');
-        //$('div#info_exhibition').html()
+        container.append(content);
     });
 }
 
 function get_biography() {
+    var container = $('div#content_div');
+    container.text('');
     get_exhibition();
-    get_education();
     get_award();
+    get_education();
 }
 
