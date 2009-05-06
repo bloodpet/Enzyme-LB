@@ -1,0 +1,95 @@
+div#scrollbar {
+    display:block; /* initially display:none; to hide from incapable */
+    }
+
+div#wn	{ 
+    position:relative;
+    width:280px; height:130px;
+    overflow:hidden;
+    font-size:8pt;
+    margin-top:-5px;
+}
+
+div#lyr1 {
+   top:-5px;
+}
+    
+div#scrollbar { 
+  position:relative;
+  width:11px; height:120px; 
+  font-size:1px;  /* so no gap or misplacement due to image vertical alignment */
+  top: -9px;
+  }
+div#track { 
+  position:absolute; left:0; top:5px;
+  width:11px; height:120px;
+  background: #e7e5e5;
+  }
+div#dragBar {
+  position:absolute; left:1px; top:1px;
+  width:9px; height:20px;
+  background-color:#999;
+  }  
+div#up { position:absolute; left:0; top:0; }  
+div#down { position:absolute; left:0; bottom:-10px; }
+
+/* for safari, to prevent selection problem  */
+div#scrollbar, div#track, div#dragBar, div#up, div#down {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+}
+
+
+/* so no gap or misplacement due to image vertical alignment
+font-size:1px in scrollbar has same effect (less likely to be removed, resulting in support issues) */
+div#scrollbar img {
+    display:block; 
+    } 
+
+
+
+/* SCROLLBAR FOR BIOGRAPHY PAGE */
+
+div#scrollbar2 {
+    display:block; /* initially display:none; to hide from incapable */
+    }
+
+div#wn2	{ 
+    position:relative;
+    width:280px; height:515px;
+    overflow:hidden;
+    font-size:8pt;
+    top:-10px;
+}
+    
+div#scrollbar2 { 
+  position:relative;
+  width:11px; height:505px; 
+  font-size:1px;  /* so no gap or misplacement due to image vertical alignment */
+  top: -4px;
+  }
+div#track2 { 
+  position:absolute; left:0; top:5px;
+  width:11px; height:505px;
+  background: #e7e5e5;
+  }
+div#dragBar2 {
+  position:absolute; left:1px; top:1px;
+  width:9px; height:20px;
+  background-color:#999;
+  }  
+div#up2 { position:absolute; left:0; top:0; }  
+div#down2 { position:absolute; left:0; bottom:-10px; }
+
+/* for safari, to prevent selection problem  */
+div#scrollbar2, div#track2, div#dragBar2, div#up2, div#down2 {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+}
+
+
+/* so no gap or misplacement due to image vertical alignment
+font-size:1px in scrollbar has same effect (less likely to be removed, resulting in support issues) */
+div#scrollbar2 img {
+    display:block; 
+    } 

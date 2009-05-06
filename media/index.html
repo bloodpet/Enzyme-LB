@@ -29,11 +29,17 @@ if ( dw_scrollObj.isSupported() ) {
 
 
 </script>
+<script type="text/javascript" language="javascript" src="/media/js/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="/media/js/page.js"></script>
 </head>
 
-<body>
+<body onload="get_work_list();">
   <div class="main-cont">
-    <div class="cont-top"><img src="/media/css/images/basketball-drum.jpg" />
+    <div class="cont-top">
+    <div id="content_div">
+          <img src="/media/css/images/basketball-drum.jpg" />
+    </div>
+    </div>
     </div>
     <div class="cont-bottom-1">
 
@@ -87,28 +93,27 @@ if ( dw_scrollObj.isSupported() ) {
  </tr>
 </table>
 
-
-
-
     </div>
 
-    <div class="cont-bottom-2">2007. Performance. Duration 7 mins
+    <div class="cont-bottom-2"><div id="upload_details">2007. Performance. Duration 7 mins</div>
       <p class="index-nav">
+        <div id="pagination">
       <span class="index-nav"><a href="#"
     class="index-nav-link">1</a></span><span class="index-nav"><a
     href="#" class="index-nav-active">2</a></span><span
     class="index-nav"><a href="#"
     class="index-nav-link">3</a></span><span class="index-nav"><a
     href="#" class="index-nav-link">4</a></span>
+        </div>
       </p>
     </div>
     
     <div class="cont-bottom-3">
       <img src="/media/css/images/lb-logo.png" />
       <ul class="sub-menu">
-        <li><a href="biography.html">BIOGRAPHY</a></li>
-        <li><a href="upcoming.html">UPCOMING</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="javascript: get_biography();">BIOGRAPHY</a></li>
+        <li><a href="javascript: get_upcoming();">UPCOMING</a></li>
+        <li><a href="javascript: get_contact();">CONTACT</a></li>
       </ul>
       <div class="copyright">All content copyright &copy; 2009 Lauren Brincat</div>
     </div>

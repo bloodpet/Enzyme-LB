@@ -1,9 +1,6 @@
-<ul>
 {% for page in object_list %}
-<li>
-<a href="javascript:get_page('{{ name }}', {{ page.id }}, {{forloop.counter}});"
+<span class="index-nav">
+<a class="index-nav-link" href="javascript:get_page('{{ name }}', {{ page.id }}, {{forloop.counter}});"
     >{{ forloop.counter }}</a>
-</li>
+</span>
 {% endfor %}
-</ul>
-

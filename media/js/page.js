@@ -8,14 +8,18 @@
 function get_page_list(name, pageid, page) {
     url = '/work/' + name + '/list';
     $.get(url, function (data) {
-        content = $('<ul></ul>');
-        $(data).find('li').each(function (i0, d0) {
+        //alert(data);
+        $('div#pagination').html(data);
+        return;
+        content = $('<div></div>');
+        $(data).find('span').each(function (i0, d0) {
             if ($(d0).find('a')[0].innerHTML == page) {
                 d0 = $(d0).addClass('selected');
             } else {
                 d0 = $(d0).removeClass('selected');
             }
             content.append(d0);
+            //content.append('<br />');
         });
         $('div#pagination').html(content);
     });
@@ -25,6 +29,8 @@ function get_page_detail(name, pageid, page) {
     url = '/work/' + name + '/';
     if (pageid) {
         url += pageid;
+    } else {
+        return
     }
     $.getJSON(url, function (data) {
         if (data.is_video === true) {
@@ -41,7 +47,7 @@ function get_page_detail(name, pageid, page) {
         $('div#content_div').html(content);
         var content = $('<span></span>');
         content.text(data.title);
-        $('div#copyright').html(content);
+        $('div#upload_details').html(content);
     });
 }
 
@@ -52,16 +58,21 @@ function get_page(name, pageid, page) {
 
 function get_work_list(name) {
     $.get('/work/list', function (data) {
-        content = $('<ul></ul>');
-        $(data).find('li').each(function (i0, d0) {
+        //alert(data);
+        $('div#lyr1').html(data);
+        return;
+        $(data).find('span').each(function (i0, d0) {
+            var content = '';
             if ($(d0).find('a')[0].innerHTML == name) {
                 d0 = $(d0).addClass('selected');
             } else {
                 d0 = $(d0).removeClass('selected');
             }
-            content.append(d0);
+            content += d0;
+            //content.append(d0);
+            //content.append('<br />');
+            $('div#work_list').append(content);
         });
-        $('div#work_list').html(content);
     });
 }
 

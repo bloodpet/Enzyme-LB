@@ -1,15 +1,6 @@
-<ul>
 {% for work in object_list %}
-    <li>
+    <span>
     <a href="javascript:get_work('{{ work.name }}');">{{ work.name }}</a>
-    </li>
+    </span>
+    <br />
 {% endfor %}
-</ul>
-<p>
-Highlight:
-<strong>
-{{ name }}
-</strong>
-using javascript.
-</p>
-

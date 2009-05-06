@@ -7,6 +7,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from models import WorkList, WorkUpload
 
 def index(request):
+    return render_to_response('index.html')
     return list_detail.object_list(
             request,
             queryset = WorkList.objects.all(),
