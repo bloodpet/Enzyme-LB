@@ -47,10 +47,8 @@ function get_page_detail(name, pageid, page) {
                 content.attr('src', '/' + data.upload);
                 content.attr('alt', data.title);
             }
+            $('div#upload_details').text(data.title);
             $('div#content_div').html(content).fadeTo('slow', 1.0);
-            var content = $('<span></span>');
-            content.text(data.title);
-            $('div#upload_details').html(content);
         });
     });
 }
