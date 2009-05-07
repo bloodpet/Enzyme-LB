@@ -1,11 +1,12 @@
 from django.db import models
+from laurenbrincat.utils import upload as util
 
 
 class UpcomingUpload(models.Model):
     upload = models.FileField(upload_to='media/upcoming')
     is_video = models.BooleanField(default=False)
-    chosen = models.BooleanField(default=False)
-    uploaded = models.DateTimeField(default=False)
+    chosen = models.BooleanField(default=True)
+    uploaded = models.DateTimeField()
 
     def __unicode__(self):
         return self.uploaded.strftime('%Y-%m-%d %H:%M:%S')
@@ -24,6 +25,7 @@ class UpcomingUpload(models.Model):
                 pass
         else:
             self.is_video = False
+            util.image_resize(self.upload)
         if self.chosen:
             for entry in UpcomingUpload.objects.all():
                 entry.chosen = False
