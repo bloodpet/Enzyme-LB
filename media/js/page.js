@@ -33,36 +33,31 @@ function get_page_list(name, pageid, page) {
 }
 
 function get_page_detail(name, pageid, page) {
-    //url = '/work/' + name + '/';
-    //if (pageid) {
-        //url += pageid;
-    //} else {
-        //return;
-    //}
-    url = '/work/page_detail';
-    $.getJSON(url, {name: name, id: pageid},  function (data) {
-        if (data.is_video === true) {
-            var content = '<object type="application/x-shockwave-flash" data="/media/player_flv.swf" width="600" height="450">' +
-            '<param name="movie" value="player_flv.swf" />' +
-            '<param name="allowFullScreen" value="true" />' +
-            '<param name="FlashVars" value="flv=/' + data.flv + '&amp;title=KydoiNoGilaga&amp;width=600&amp;height=450&amp;autoplay=1&amp;margin=0&amp;bgcolor=f7f7f3&amp;playercolor=dbdbdb&amp;loadingcolor=838383&amp;buttoncolor=000000&amp;buttonovercolor=ffffff&amp;slidercolor1=838383&amp;slidercolor2=cccccc&amp;sliderovercolor=000000&amp;showstop=1&amp;showvolume=1" />' +
-            '</object>';
-        } else {
-            var content = $('<img />');
-            content.attr('src', '/' + data.upload);
-            content.attr('alt', data.title);
-        }
-        $('div#content_div').html(content).fadeTo('slow', 1.0);
-        var content = $('<span></span>');
-        content.text(data.title);
+    $('div#content_div').fadeTo('slow', 0.01, function () {
+        url = '/work/page_detail';
+        $.getJSON(url, {name: name, id: pageid},  function (data) {
+            if (data.is_video === true) {
+                var content = '<object type="application/x-shockwave-flash" data="/media/player_flv.swf" width="600" height="450">' +
+                '<param name="movie" value="player_flv.swf" />' +
+                '<param name="allowFullScreen" value="true" />' +
+                '<param name="FlashVars" value="flv=/' + data.flv + '&amp;title=KydoiNoGilaga&amp;width=600&amp;height=450&amp;autoplay=1&amp;margin=0&amp;bgcolor=f7f7f3&amp;playercolor=dbdbdb&amp;loadingcolor=838383&amp;buttoncolor=000000&amp;buttonovercolor=ffffff&amp;slidercolor1=838383&amp;slidercolor2=cccccc&amp;sliderovercolor=000000&amp;showstop=1&amp;showvolume=1" />' +
+                '</object>';
+            } else {
+                var content = $('<img />');
+                content.attr('src', '/' + data.upload);
+                content.attr('alt', data.title);
+            }
+            $('div#content_div').html(content).fadeTo('slow', 1.0);
+            var content = $('<span></span>');
+            content.text(data.title);
+            $('div#upload_details').html(content);
+        });
     });
 }
 
 function get_page(name, pageid, page) {
-    $('div#content_div').fadeTo('slow', 0.01, function () {
         get_page_list(name, pageid, page);
         get_page_detail(name, pageid, page);
-    });
 }
 
 function get_work_list(name) {
