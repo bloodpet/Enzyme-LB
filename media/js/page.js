@@ -141,6 +141,7 @@ function get_exhibition() {
     $.getJSON(url, function (data) {
         var container = $('div#content_div');
         var content = $('<div id="exhibition"></div>');
+        content.addClass('bio-left');
         content.append('<h3>Exhibition</h3>');
         var details = data.details;
         var y = data.years;
@@ -162,6 +163,7 @@ function get_exhibition() {
 function get_biography() {
     var container = $('div#content_div');
     container.text('');
+    container.addClass('cont-top-bio');
     get_exhibition();
     get_award();
     get_education();
