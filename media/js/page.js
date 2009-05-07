@@ -6,54 +6,63 @@
 
 
 function get_page_list(name, pageid, page) {
-    url = '/work/' + name + '/list';
-    $.get(url, function (data) {
-        //alert(data);
-        $('div#pagination').html(data);
-        return;
-        content = $('<div></div>');
-        $(data).find('span').each(function (i0, d0) {
-            if ($(d0).find('a')[0].innerHTML == page) {
-                d0 = $(d0).addClass('selected');
+    //var url = '/work/' + name + '/list';
+    var url = '/work/page_list';
+    $('div#pagination').text('');
+    $.getJSON(url, {name: name}, function (data) {
+        var name = data.name;
+        var rows = data.rows;
+        var rowsLen = rows.length;
+        for (var cnt=0; cnt<rowsLen; ++cnt) {
+            var span = $('<span></span>');
+            if (rows[cnt].name == name) {
+                span.addClass('selected');
             } else {
-                d0 = $(d0).removeClass('selected');
+                span.removeClass('selected');
             }
-            content.append(d0);
-            //content.append('<br />');
-        });
-        $('div#pagination').html(content);
+            link = $('<a href="javascript:get_page_detail(\'' + name + '\', \'' + rows[cnt].id + '\', \'' + (cnt+1) + '\');"></a>');
+            link.text(cnt+1);
+            span.html(link);
+            $('div#pagination').append(span);
+            $('div#pagination').append(' ');
+        }
+        if (! pageid) {
+            get_page_detail(name, rows[0].id, 1);
+        }
     });
 }
 
 function get_page_detail(name, pageid, page) {
-    url = '/work/' + name + '/';
-    if (pageid) {
-        url += pageid;
-    } else {
-        return
-    }
-    $.getJSON(url, function (data) {
+    //url = '/work/' + name + '/';
+    //if (pageid) {
+        //url += pageid;
+    //} else {
+        //return;
+    //}
+    url = '/work/page_detail';
+    $.getJSON(url, {name: name, id: pageid},  function (data) {
         if (data.is_video === true) {
             var content = '<object type="application/x-shockwave-flash" data="/media/player_flv.swf" width="600" height="450">' +
             '<param name="movie" value="player_flv.swf" />' +
             '<param name="allowFullScreen" value="true" />' +
-            '<param name="FlashVars" value="flv=/' + data.upload + '&amp;title=KydoiNoGilaga&amp;width=600&amp;height=450&amp;autoplay=1&amp;margin=0&amp;bgcolor=f7f7f3&amp;playercolor=dbdbdb&amp;loadingcolor=838383&amp;buttoncolor=000000&amp;buttonovercolor=ffffff&amp;slidercolor1=838383&amp;slidercolor2=cccccc&amp;sliderovercolor=000000&amp;showstop=1&amp;showvolume=1" />' +
+            '<param name="FlashVars" value="flv=/' + data.flv + '&amp;title=KydoiNoGilaga&amp;width=600&amp;height=450&amp;autoplay=1&amp;margin=0&amp;bgcolor=f7f7f3&amp;playercolor=dbdbdb&amp;loadingcolor=838383&amp;buttoncolor=000000&amp;buttonovercolor=ffffff&amp;slidercolor1=838383&amp;slidercolor2=cccccc&amp;sliderovercolor=000000&amp;showstop=1&amp;showvolume=1" />' +
             '</object>';
         } else {
             var content = $('<img />');
             content.attr('src', '/' + data.upload);
             content.attr('alt', data.title);
         }
-        $('div#content_div').html(content);
+        $('div#content_div').html(content).fadeTo('slow', 1.0);
         var content = $('<span></span>');
         content.text(data.title);
-        $('div#upload_details').html(content);
     });
 }
 
 function get_page(name, pageid, page) {
-    get_page_list(name, pageid, page);
-    get_page_detail(name, pageid, page);
+    $('div#content_div').fadeTo('slow', 0.01, function () {
+        get_page_list(name, pageid, page);
+        get_page_detail(name, pageid, page);
+    });
 }
 
 function get_work_list(name) {

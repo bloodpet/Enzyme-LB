@@ -1,0 +1,15 @@
+div.cont-top, div.cont-top-bio, div.cont-top-contact, div.cont-top-upcoming {
+    min-height: 600px;
+    vertical-align: center;
+    text-align: center;
+}
+
+div#loader {
+    background: url(/media/img/ajax-loader.gif) no-repeat center center;
+    display: none;
+    z-index: 9;
+    position: relative;
+    top: -300px;
+}
+
+
