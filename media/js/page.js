@@ -50,10 +50,15 @@ function get_page_detail(name, pageid, page) {
             }
             $('div#upload_details').text(data.title);
             $('div#content_div').html(content)
-            content.load(function () {
+            if (data.is_video === true) {
                 $('div#content_div').fadeTo('slow', 1.0);
                 $('div#loader').hide();
-            });
+            } else {
+                content.load(function () {
+                    $('div#content_div').fadeTo('slow', 1.0);
+                    $('div#loader').hide();
+                });
+            }
         });
     });
 }
