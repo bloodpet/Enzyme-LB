@@ -311,12 +311,17 @@ function get_biography() {
 }
 
 function get_upcoming() {
+    $('div#loader').show();
     var container = $('div#content_div');
     url = '/upcoming/';
-    $('div#loader').show();
+    $('div#content_div').fadeTo('slow', 0.01, function () {
     $.get(url, function (data) {
         container.html(data);
-        $('div#loader').hide();
+        $(data).load(function () {
+            $('div#content_div').fadeTo('slow', 1.0);
+            $('div#loader').hide();
+        });
+    });
     });
 }
 
