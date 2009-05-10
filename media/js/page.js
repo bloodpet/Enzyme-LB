@@ -326,6 +326,27 @@ function get_upcoming() {
 }
 
 function get_contact() {
-    alert('Contact page coming up');
+    //$('div#loader').show();
+    var container = $('div#content_div');
+    img = $('<img src="/media/css/images/contact-bg.jpg" />');
+    container.fadeTo('slow', 0.01, function () {
+        contact_div = $('<div class="cont-top-contact">\n' +
+            ' <div class="contact-details">\n' +
+            '   <h3>Location</h3>\n' +
+            '   <p>Sydney, Australia</p>\n' +
+            '   <h3>Email</h3>\n' +
+            '   <p><a href="mailto:info@laurenbrincat.com" class="email">info@laurenbrincat.com</a></p>\n' +
+            '   <h3>Phone</h3>\n' +
+            '   <p>+61 415 647 724</p>\n' +
+            ' </div>\n' +
+            '</div>\n');
+        //container.html(img);
+        //container.load(function () {
+        //contact_div.load(function () {
+            container.html(contact_div);
+            container.fadeTo('slow', 1.0);
+            $('div#loader').hide();
+        //});
+    });
 }
 
