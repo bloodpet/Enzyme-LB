@@ -1,9 +1,27 @@
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
 from django.utils import simplejson
 from django.views.generic import list_detail
 from models import Award, Education, Exhibition
 
 def index(request):
+    award_d = award(request)
+    education_d = education(request)
+    exhibition_d = exhibition(request)
+    json = simplejson.dumps(dict(
+        award = award_d,
+        education = education_d,
+        exhibition = exhibition_d,
+    ))
+    return HttpResponse(json, mimetype='application/json')
+    return render_to_response('biography_div.html', dict(
+        award_details = award_d['details'],
+        award_years = award_d['years'],
+        education_details = education_d['details'],
+        education_years = education_d['years'],
+        exhibition_details = exhibition_d['details'],
+        exhibition_years = exhibition_d['years'],
+    ))
     return list_detail.object_list(
             request,
             queryset = Exhibition.objects.all(),
@@ -27,6 +45,8 @@ def award(request):
     years = details.keys()
     years.sort()
     years.reverse()
+    print dict(years=years, details=details)
+    return dict(years=years, details=details)
     json = simplejson.dumps(dict(years=years, details=details))
     return HttpResponse(json, mimetype='application/json')
 
@@ -42,6 +62,7 @@ def education(request):
     years = details.keys()
     years.sort()
     years.reverse()
+    return dict(years=years, details=details)
     json = simplejson.dumps(dict(years=years, details=details))
     return HttpResponse(json, mimetype='application/json')
 
@@ -57,6 +78,7 @@ def exhibition(request):
     years = details.keys()
     years.sort()
     years.reverse()
+    return dict(years=years, details=details)
     json = simplejson.dumps(dict(years=years, details=details))
     return HttpResponse(json, mimetype='application/json')
 

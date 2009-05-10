@@ -4,12 +4,18 @@ div.cont-top, div.cont-top-bio, div.cont-top-contact, div.cont-top-upcoming {
     text-align: center;
 }
 
+div.cont-top-bio h1 {
+    text-align: left;
+}
+
 div#loader {
     background: url(/media/img/ajax-loader.gif) no-repeat center center;
+    width: 900px;
+    height: 600px;
     display: none;
     z-index: 9;
-    position: relative;
-    top: -300px;
+    position: absolute;
+    top: 30px;
 }
 
 
