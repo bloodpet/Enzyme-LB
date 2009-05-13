@@ -78,7 +78,6 @@ function get_work_list(name) {
         container.addClass('left');
         container.addClass('holder');
         content.addClass('scroll-pane');
-        content.addClass('lyr1-pane');
         content.jScrollPane({
             arrowSize: 5,
             scrollbarOnLeft: true,
@@ -268,7 +267,7 @@ function get_biography_exhibition (data, container) {
         '</div>\n' +
         '<div id="down"><a class="mouseover_down" href=""><img src="css/images/down.png" width="11" height="5" alt="" border="0"/></a></div>\n' +
         '</div>\n';
-    td.append(scrollbar);
+    //td.append(scrollbar);
     var td = $('<td></td>');
     tr.append(td);
     var wn2 = $('<div id="wn2"></div>');
@@ -293,6 +292,15 @@ function get_biography_exhibition (data, container) {
     table.append(tr);
     content.append(table);
     container.append(content);
+    wn2.addClass('left');
+    wn2.addClass('holder');
+    lyr12.addClass('scroll-pane');
+    lyr12.jScrollPane({
+        arrowSize: 5,
+        scrollbarOnLeft: true,
+        scrollbarWidth: 11,
+        showArrows: true
+    });
 }
 
 function get_biography() {

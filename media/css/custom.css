@@ -1,3 +1,18 @@
+
+.left .jScrollPaneTrack {
+    left: 0;
+    right: auto;
+}
+.left a.jScrollArrowUp {
+    left: 0;
+    right: auto;
+}
+.left a.jScrollArrowDown {
+    left: 0;
+    right: auto;
+}
+
+
 div.cont-top, div.cont-top-bio, div.cont-top-contact, div.cont-top-upcoming {
     min-height: 600px;
     vertical-align: center;
@@ -16,6 +31,64 @@ div#loader {
     z-index: 9;
     position: absolute;
     top: 30px;
+}
+
+/*div#lyr1 div.lyr1-pane {*/
+    /*background-color: #ffffff;*/
+/*}*/
+
+a.jScrollArrowUp {
+    /*background: url(/media/images/basic_arrow_up.gif) no-repeat 0 0px;*/
+    /*background: #ffffff url(/media/css/images/up.png) no-repeat 0px 3px;*/
+    background: url(/media/css/images/up.png) no-repeat 0px 3px;
+}
+/*a.jScrollArrowUp:hover {*/
+    /*background-position: 0 -15px;*/
+/*}*/
+a.jScrollArrowDown {
+    /*background: url(/media/images/basic_arrow_down.gif) no-repeat 0 0px;*/
+    /*background: url(/media/css/images/down.png) no-repeat 0px 0px;*/
+    /*background: #ffffff url(/media/css/images/down.png) no-repeat 0px 1px;*/
+    background: url(/media/css/images/down.png) no-repeat 0px 1px;
+}
+/*a.jScrollArrowDown:hover {*/
+	/*background-position: 0 -15px;*/
+/*}*/
+/*a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {*/
+	/*background-position: 0 -30px;*/
+/*}*/
+
+div#wn { 
+    position:relative;
+    width: 280px;
+    height: 130px;
+    /*overflow:hidden;*/
+    font-size:8pt;
+    margin-top:-5px;
+}
+
+div#lyr1 {
+    height: 130px;
+    top:-5px;
+    background-color: #ffffff;
+}
+
+#wn2 {
+    position:relative;
+    width:280px; height:515px;
+    overflow:hidden;
+    font-size:8pt;
+    top:-10px;
+}
+#lyr12 {
+    height: 515px;
+}
+
+#wn a.jScrollArrowUp {
+    background-color: #ffffff;
+}
+#wn a.jScrollArrowDown {
+    background-color: #ffffff;
 }
 
 
