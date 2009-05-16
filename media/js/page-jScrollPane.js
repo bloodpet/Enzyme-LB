@@ -340,9 +340,27 @@ function get_upcoming() {
 
 function get_contact() {
     //$('div#loader').show();
-    var container = $('div#content_div');
+    container = $('div#content_div');
     img = $('<img src="/media/css/images/contact-bg.jpg" />');
+    url = '/contact/';
     container.fadeTo('slow', 0.01, function () {
+    $.getJSON(url, function (data) {
+        contact_div = $('<div class="cont-top-contact"></div>');
+        contact_details = $('<div class="contact-details"></div>');
+        contact_div.html(contact_details);
+        if (data.location) {
+            contact_details.append('<h3>Location</h3>');
+            contact_details.append('<p>' + data.location + '</p>');
+        }
+        if (data.email) {
+            contact_details.append('<h3>Email</h3>');
+            contact_details.append('<p><a href="mailto:data.email" class="email">' + data.email + '</a></p>');
+        }
+        if (data.phone) {
+            contact_details.append('<h3>phone</h3>');
+            contact_details.append('<p>' + data.phone + '</p>');
+        }
+        /*
         contact_div = $('<div class="cont-top-contact">\n' +
             ' <div class="contact-details">\n' +
             '   <h3>Location</h3>\n' +
@@ -353,13 +371,15 @@ function get_contact() {
             '   <p>+61 415 647 724</p>\n' +
             ' </div>\n' +
             '</div>\n');
+        */
         //container.html(img);
         //container.load(function () {
         //contact_div.load(function () {
-            container.html(contact_div);
-            container.fadeTo('slow', 1.0);
-            $('div#loader').hide();
+        container.html(contact_div);
+        container.fadeTo('slow', 1.0);
+        $('div#loader').hide();
         //});
+    });
     });
 }
 

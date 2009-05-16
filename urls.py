@@ -32,9 +32,11 @@ urlpatterns = patterns('',
     (r'^biography/education$', 'laurenbrincat.biography.views.education'),
     (r'^biography/exhibition$', 'laurenbrincat.biography.views.exhibition'),
     (r'^upcoming/$', 'laurenbrincat.upcoming.views.index'),
+    (r'^contact/$', 'laurenbrincat.contact.views.index'),
 
     # Static route
-    (r'^$', 'django.views.generic.simple.redirect_to', {'url': 'index.html'}),
+    #(r'^$', 'django.views.generic.simple.redirect_to', {'url': 'index.html'}),
+    (r'^$', 'django.views.generic.simple.redirect_to', {'url': 'comingsoon.html'}),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/home/egcalso/Work/EnzymeIT/LaurenBrincat/laurenbrincat/media/'}),
     (r'^(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/home/egcalso/Work/EnzymeIT/LaurenBrincat/laurenbrincat/media/'}),
 
