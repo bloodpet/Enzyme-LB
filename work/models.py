@@ -4,14 +4,14 @@ from laurenbrincat.utils import upload
 
 class WorkList(models.Model):
     name = models.CharField(max_length=128, unique=True)
-    description = models.TextField()
+    description = models.TextField(blank=False)
 
     def __unicode__(self):
         return self.name
 
 class WorkUpload(models.Model):
     work_list = models.ForeignKey(WorkList)
-    title = models.CharField(max_length=128)
+    title = models.CharField(max_length=128, blank=False)
     # File
     work_upload = models.FileField(upload_to='media/work')
     flv_filename = models.CharField(max_length=100)

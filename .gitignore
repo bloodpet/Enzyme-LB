@@ -3,3 +3,10 @@
 *.pyo
 data
 *.egg-info
+CHANGES
+.screenrc
+.screen.rc
+media/work/
+media/upcoming/
+remote
+settings.py
