@@ -383,3 +383,7 @@ function get_contact() {
     });
 }
 
+function start() {
+    get_work('Blaze of Glory');
+}
+
