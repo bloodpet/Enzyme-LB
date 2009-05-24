@@ -5,6 +5,7 @@ from django.views.generic import list_detail
 from django.shortcuts import render_to_response, get_object_or_404
 
 from models import WorkList, WorkUpload
+from django.core import serializers
 
 def index(request):
     return render_to_response('index.html')
@@ -42,9 +43,18 @@ def page_list(request):
         )
 
 def work_list(request, name=None):
-    return list_detail.object_list(
-            request,
-            queryset = WorkList.objects.all(),
-            extra_context = dict(name = name),
+    works = serializers.serialize('json', WorkList.objects.all())
+    data = dict(
+            works = serializers.serialize('json', WorkList.objects.all()),
+            chosen = name,
         )
+    print works
+    json = simplejson.dumps(data)
+    return HttpResponse(works)
+    return HttpResponse(json, mimetype='application/json')
+    #return list_detail.object_list(
+            #request,
+            #queryset = WorkList.objects.all(),
+            #extra_context = dict(name = name),
+        #)
 

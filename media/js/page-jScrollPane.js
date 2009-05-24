@@ -4,6 +4,9 @@
  *
  */
 
+var main_link = Array();
+var work_list = Array();
+var work_list_link = Array();
 
 function get_page_list(name, pageid, page) {
     //var url = '/work/' + name + '/list';
@@ -20,8 +23,17 @@ function get_page_list(name, pageid, page) {
             } else {
                 span.removeClass('selected');
             }
-            link = $('<a href="javascript:get_page_detail(\'' + name + '\', \'' + rows[cnt].id + '\', \'' + (cnt+1) + '\');"></a>');
+            link = $('<a id="page_link_' + (cnt+1) + '" href="javascript:get_page(\'' + name + '\', \'' + rows[cnt].id + '\', \'' + (cnt+1) + '\');"></a>');
             link.text(cnt+1);
+            if ( page == cnt+1 ) {
+                link.css({fontWeight: 'bolder'});
+            } else if ( !page ) {
+                if ( cnt == 0 ) {
+                    link.css({fontWeight: 'bolder'});
+                }
+            } else {
+                link.css({fontWeight: 'normal'});
+            }
             span.html(link);
             $('div#pagination').append(span);
             $('div#pagination').append(' ');
@@ -64,11 +76,45 @@ function get_page_detail(name, pageid, page) {
 }
 
 function get_page(name, pageid, page) {
-        get_page_list(name, pageid, page);
-        get_page_detail(name, pageid, page);
+    get_page_list(name, pageid, page);
+    get_page_detail(name, pageid, page);
 }
 
 function get_work_list(name) {
+    url = '/work/list';
+    $.getJSON(url, {name: name}, function (data) {
+        works = data;
+        worksLen = works.length;
+        //var chosen = data.chosen;
+        container = $('div#wn');
+        content = $('div#lyr1');
+        container.html(content);
+        container.addClass('left');
+        container.addClass('holder');
+        content.addClass('scroll-pane');
+        content.jScrollPane({
+            arrowSize: 5,
+            scrollbarOnLeft: true,
+            scrollbarWidth: 11,
+            showArrows: true
+        });
+        content.text('');
+        for (cnt=0; cnt<=worksLen; cnt++) {
+            work = works[cnt];
+            span = $('<span></span>');
+            a = $('<a href="javascript: get_work(\'' + work.fields.name.replace("'", "\\'") + '\')"></a>');
+            if (name == work.fields.name) {
+                span.css({fontWeight: 'bold', color: '#000'});
+            } else {
+                span.css({fontWeight: 'normal'});
+            }
+            a.text(work.fields.name);
+            span.html(a);
+            span.append('<br />');
+            content.append(span);
+        }
+    });
+    return
     $.get('/work/list', function (data) {
         //alert(data);
         container = $('div#wn');
@@ -101,6 +147,7 @@ function get_work_list(name) {
 }
 
 function get_work(name) {
+    $('.sub-menu a').css({color: '#999'});
     get_work_list(name);
     get_page(name);
 }
@@ -304,6 +351,10 @@ function get_biography_exhibition (data, container) {
 }
 
 function get_biography() {
+    $('a').css({fontWeight: 'normal', color: '#333'});
+    $('#pagination').text('');
+    $('.sub-menu a').css({color: '#999'});
+    $('a#main_bio').css({color: '#000'});
     var container = $('div#content_div');
     var content = $('<div id="content_div_bio" class="cont-top-bio"></div>');
     var content_l = $('<div class="bio-left"></div>');
@@ -324,6 +375,10 @@ function get_biography() {
 }
 
 function get_upcoming() {
+    $('a').css({fontWeight: 'normal', color: '#333'});
+    $('#pagination').text('');
+    $('.sub-menu a').css({color: '#999'});
+    $('a#main_upcoming').css({color: '#000'});
     $('div#loader').show();
     var container = $('div#content_div');
     url = '/upcoming/';
@@ -339,6 +394,10 @@ function get_upcoming() {
 }
 
 function get_contact() {
+    $('a').css({fontWeight: 'normal', color: '#333'});
+    $('#pagination').text('');
+    $('.sub-menu a').css({color: '#999'});
+    $('a#main_contact').css({color: '#000'});
     //$('div#loader').show();
     container = $('div#content_div');
     img = $('<img src="/media/css/images/contact-bg.jpg" />');
