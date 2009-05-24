@@ -1,0 +1,22 @@
+sessionname lb
+chdir  ../res
+screen -t res
+chdir ../laurenbrincat
+screen -t run
+screen -t vcs
+screen -t conf
+chdir     media
+screen -t media
+chdir  ../templates
+screen -t templates
+chdir  ../work
+screen -t work
+chdir  ../biography
+screen -t biography
+chdir  ../upcoming
+screen -t upcoming
+chdir  ../contact
+screen -t contact
+chdir  ../
+screen -t ls
+select 1
