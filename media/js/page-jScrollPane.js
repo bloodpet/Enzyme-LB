@@ -88,18 +88,12 @@ function get_work_list(name) {
         //var chosen = data.chosen;
         container = $('div#wn');
         content = $('div#lyr1');
-        container.html(content);
         container.addClass('left');
         container.addClass('holder');
         content.addClass('scroll-pane');
-        content.jScrollPane({
-            arrowSize: 5,
-            scrollbarOnLeft: true,
-            scrollbarWidth: 11,
-            showArrows: true
-        });
         content.text('');
-        for (cnt=0; cnt<=worksLen; cnt++) {
+        //container.html(content);
+        for (cnt=0; cnt<worksLen; cnt++) {
             work = works[cnt];
             span = $('<span></span>');
             a = $('<a href="javascript: get_work(\'' + work.fields.name.replace("'", "\\'") + '\')"></a>');
@@ -113,6 +107,12 @@ function get_work_list(name) {
             span.append('<br />');
             content.append(span);
         }
+        content.jScrollPane({
+            arrowSize: 5,
+            scrollbarOnLeft: true,
+            scrollbarWidth: 11,
+            showArrows: true
+        });
     });
     return
     $.get('/work/list', function (data) {
