@@ -353,8 +353,9 @@ function get_biography_exhibition (data, container) {
 function get_biography() {
     $('a').css({fontWeight: 'normal', color: '#333'});
     $('#pagination').text('');
+    $('#upload_details').text('');
     $('.sub-menu a').css({color: '#999'});
-    $('a#main_bio').css({color: '#000'});
+    $('.sub-menu a#main_bio').css({color: '#000'});
     var container = $('div#content_div');
     var content = $('<div id="content_div_bio" class="cont-top-bio"></div>');
     var content_l = $('<div class="bio-left"></div>');
