@@ -96,7 +96,7 @@ function get_work_list(name) {
         for (cnt=0; cnt<worksLen; cnt++) {
             work = works[cnt];
             span = $('<span></span>');
-            a = $('<a href="javascript: get_work(\'' + work.fields.name.replace("'", "\\'") + '\')"></a>');
+            a = $('<a href="javascript: get_work(\'' + work.fields.name.replace(/'/g, "\\'") + '\')"></a>');
             if (name == work.fields.name) {
                 span.css({fontWeight: 'bold', color: '#000'});
             } else {
@@ -207,15 +207,6 @@ function get_exhibition() {
         var tr = $('<tr></tr>');
         var td = $('<td></td>');
         tr.append(td);
-        var scrollbar = '<div id="scrollbar2"><!-- border attribute added to reduce support questions on the subject. \n' +
-              'If you like valid strict markup, remove and place a img {border:none;} spec in style sheet -->\n' +
-            '<div id="up"><a class="mouseover_up" href=""><img src="css/images/up.png" width="11" height="5" alt="" border="0" /></a></div>\n' +
-            '<div id="track2">\n' +
-            '<div id="dragBar2"></div>\n' +
-            '</div>\n' +
-            '<div id="down"><a class="mouseover_down" href=""><img src="css/images/down.png" width="11" height="5" alt="" border="0"/></a></div>\n' +
-            '</div>\n';
-        td.append(scrollbar);
         var td = $('<td></td>');
         tr.append(td);
         var wn2 = $('<div id="wn2"></div>');
@@ -339,12 +330,12 @@ function get_biography_exhibition (data, container) {
     table.append(tr);
     content.append(table);
     container.append(content);
-    wn2.addClass('left');
+    //wn2.addClass('left');
     wn2.addClass('holder');
     lyr12.addClass('scroll-pane');
     lyr12.jScrollPane({
         arrowSize: 5,
-        scrollbarOnLeft: true,
+        scrollbarOnLeft: false,
         scrollbarWidth: 11,
         showArrows: true
     });
@@ -368,9 +359,9 @@ function get_biography() {
         content.append(content_l)
         content.append(content_r)
         container.html(content);
-        get_biography_exhibition(data.exhibition, content_l);
-        get_biography_education(data.education, content_r);
-        get_biography_award(data.award, content_r);
+        get_biography_exhibition(data.exhibition, content_r);
+        get_biography_education(data.education, content_l);
+        get_biography_award(data.award, content_l);
         $('div#loader').hide();
     });
 }
@@ -414,7 +405,7 @@ function get_contact() {
         }
         if (data.email) {
             contact_details.append('<h3>Email</h3>');
-            contact_details.append('<p><a href="mailto:data.email" class="email">' + data.email + '</a></p>');
+            contact_details.append('<p><a href="mailto:' + data.email + '" class="email">' + data.email + '</a></p>');
         }
         if (data.phone) {
             contact_details.append('<h3>phone</h3>');
