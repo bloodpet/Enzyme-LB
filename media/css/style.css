@@ -22,8 +22,8 @@ div.cont-bottom-1 { width:300px; float:left; }
 div.cont-bottom-2 { width:300px; float:left; position:relative; text-align:center; font-size:1em; color:#999; }
 div.cont-bottom-3 { width:300px; float:right; position:relative; text-align:right; }
 
-div.bio-left { width:600px; float:left; position:relative; }
-div.bio-right { width:300px; float:right; position:relative; }
+div.bio-left { width:400px; float:left; position:relative; }
+div.bio-right { width:450px; float:right; position:relative; }
 
 table.bio-right { cellpadding:0; cellspacing:0; margin:0 15px 0 15px; font-size:1.1em; }
 table.bio-right td.cell-left { width:200px; }

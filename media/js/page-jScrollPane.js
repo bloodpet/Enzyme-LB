@@ -297,15 +297,6 @@ function get_biography_exhibition (data, container) {
     var tr = $('<tr></tr>');
     var td = $('<td></td>');
     tr.append(td);
-    var scrollbar = '<div id="scrollbar2"><!-- border attribute added to reduce support questions on the subject. \n' +
-          'If you like valid strict markup, remove and place a img {border:none;} spec in style sheet -->\n' +
-        '<div id="up"><a class="mouseover_up" href=""><img src="css/images/up.png" width="11" height="5" alt="" border="0" /></a></div>\n' +
-        '<div id="track2">\n' +
-        '<div id="dragBar2"></div>\n' +
-        '</div>\n' +
-        '<div id="down"><a class="mouseover_down" href=""><img src="css/images/down.png" width="11" height="5" alt="" border="0"/></a></div>\n' +
-        '</div>\n';
-    //td.append(scrollbar);
     var td = $('<td></td>');
     tr.append(td);
     var wn2 = $('<div id="wn2"></div>');
@@ -330,6 +321,7 @@ function get_biography_exhibition (data, container) {
     table.append(tr);
     content.append(table);
     container.append(content);
+    /*
     //wn2.addClass('left');
     wn2.addClass('holder');
     lyr12.addClass('scroll-pane');
@@ -339,6 +331,7 @@ function get_biography_exhibition (data, container) {
         scrollbarWidth: 11,
         showArrows: true
     });
+    */
 }
 
 function get_biography() {
@@ -362,6 +355,15 @@ function get_biography() {
         get_biography_exhibition(data.exhibition, content_r);
         get_biography_education(data.education, content_l);
         get_biography_award(data.award, content_l);
+        container.addClass('left');
+        container.addClass('holder');
+        content.addClass('scroll-pane');
+        content.jScrollPane({
+            arrowSize: 5,
+            scrollbarOnLeft: true,
+            scrollbarWidth: 11,
+            showArrows: true
+        });
         $('div#loader').hide();
     });
 }
