@@ -26,3 +26,9 @@ class Exhibition(models.Model):
     def __unicode__(self):
         return '%s: %s' % (self.year, self.details)
 
+
+class Biography(models.Model):
+    info = models.TextField(blank=True)
+
+    def __unicode__(self):
+        return self.info

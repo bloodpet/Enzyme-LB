@@ -8,4 +8,5 @@ class AwardAdmin(admin.ModelAdmin):
 admin.site.register(models.Exhibition)
 admin.site.register(models.Education)
 admin.site.register(models.Award)
+admin.site.register(models.Biography)
 

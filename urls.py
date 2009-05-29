@@ -31,6 +31,7 @@ urlpatterns = patterns('',
     (r'^biography/award$', 'laurenbrincat.biography.views.award'),
     (r'^biography/education$', 'laurenbrincat.biography.views.education'),
     (r'^biography/exhibition$', 'laurenbrincat.biography.views.exhibition'),
+    (r'^biography/info$', 'laurenbrincat.biography.views.info'),
     (r'^upcoming/$', 'laurenbrincat.upcoming.views.index'),
     (r'^contact/$', 'laurenbrincat.contact.views.index'),
 

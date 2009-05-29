@@ -99,6 +99,17 @@ div#lyr1 {
 #content_div_bio {
     float: left;
 }
+#content_div_bio {
+    margin-top: -6px;
+}
+
+#content_div a.jScrollArrowUp {
+    background-color: #f7f7f5;
+}
+#content_div a.jScrollArrowDown {
+    background-color: #f7f7f5;
+}
+
 
 #wn a.jScrollArrowUp {
     background-color: #ffffff;

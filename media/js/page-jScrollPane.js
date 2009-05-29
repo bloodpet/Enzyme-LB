@@ -334,6 +334,15 @@ function get_biography_exhibition (data, container) {
     */
 }
 
+function get_biography_info (data, container) {
+    // Get information about the biography.
+    var content = $('<div id="info"></div>');
+    container.append(content);
+    //content.text('hello');
+    content.html('<p>' + data.info + '</p>');
+    content.css({textAlign: 'left', marginLeft: 16});
+}
+
 function get_biography() {
     $('a').css({fontWeight: 'normal', color: '#333'});
     $('#pagination').text('');
@@ -349,10 +358,11 @@ function get_biography() {
     container.text('');
     url = '/biography/';
     $.getJSON(url, function (data) {
-        content.append(content_l)
-        content.append(content_r)
+        content.append(content_l);
+        content.append(content_r);
         container.html(content);
         get_biography_exhibition(data.exhibition, content_r);
+        get_biography_info(data.info, content_l);
         get_biography_education(data.education, content_l);
         get_biography_award(data.award, content_l);
         container.addClass('left');

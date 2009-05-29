@@ -2,13 +2,15 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.utils import simplejson
 from django.views.generic import list_detail
-from models import Award, Education, Exhibition
+from models import Award, Education, Exhibition, Biography
 
 def index(request):
     award_d = award(request)
     education_d = education(request)
     exhibition_d = exhibition(request)
+    info_d = info(request)
     json = simplejson.dumps(dict(
+        info = info_d,
         award = award_d,
         education = education_d,
         exhibition = exhibition_d,
@@ -81,4 +83,14 @@ def exhibition(request):
     return dict(years=years, details=details)
     json = simplejson.dumps(dict(years=years, details=details))
     return HttpResponse(json, mimetype='application/json')
+
+def info(request):
+    details = {}
+    for entry in Biography.objects.all():
+        details['info'] = entry.info
+    return details
+    json = simplejson.dumps(details)
+    return HttpResponse(json, mimetype='application/json')
+
+
 
