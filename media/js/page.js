@@ -22,6 +22,15 @@ function get_page_list(name, pageid, page) {
             }
             link = $('<a href="javascript:get_page_detail(\'' + name + '\', \'' + rows[cnt].id + '\', \'' + (cnt+1) + '\');"></a>');
             link.text(cnt+1);
+			if ( page == cnt+1 ) {
+                link.css({fontWeight: 'bolder'});
+            } else if ( !page ) {
+                if ( cnt == 0 ) {
+                    link.css({fontWeight: 'bolder'});
+                }
+            } else {
+                link.css({fontWeight: 'bolder'});
+            }
             span.html(link);
             $('div#pagination').append(span);
             $('div#pagination').append(' ');

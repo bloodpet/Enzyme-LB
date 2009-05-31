@@ -32,7 +32,7 @@ function get_page_list(name, pageid, page) {
                     link.css({fontWeight: 'bolder'});
                 }
             } else {
-                link.css({fontWeight: 'normal'});
+                link.css({fontWeight: 'bolder'});
             }
             span.html(link);
             $('div#pagination').append(span);
@@ -96,13 +96,13 @@ function get_work_list(name) {
         for (cnt=0; cnt<worksLen; cnt++) {
             work = works[cnt];
             span = $('<span></span>');
-            a = $('<a href="javascript: get_work(\'' + work.fields.name.replace(/'/g, "\\'") + '\')"></a>');
+            a = $('<a style="line-height:1.6em;padding-left:8px" href="javascript: get_work(\'' + work.fields.name.replace(/'/g, "\\'") + '\')"></a>');
             if (name == work.fields.name) {
-                span.css({fontWeight: 'bold', color: '#000'});
+                span.css({fontWeight: 'bold', color: '#000',});
             } else {
                 span.css({fontWeight: 'normal'});
             }
-            a.text(work.fields.name);
+            a.text(work.fields.name)
             span.html(a);
             span.append('<br />');
             content.append(span);
@@ -110,7 +110,7 @@ function get_work_list(name) {
         content.jScrollPane({
             arrowSize: 5,
             scrollbarOnLeft: true,
-            scrollbarWidth: 11,
+            scrollbarWidth: 9,
             showArrows: true
         });
     });
@@ -127,7 +127,7 @@ function get_work_list(name) {
         content.jScrollPane({
             arrowSize: 5,
             scrollbarOnLeft: true,
-            scrollbarWidth: 11,
+            scrollbarWidth: 9,
             showArrows: true
         });
         return;
@@ -328,7 +328,7 @@ function get_biography_exhibition (data, container) {
     lyr12.jScrollPane({
         arrowSize: 5,
         scrollbarOnLeft: false,
-        scrollbarWidth: 11,
+        scrollbarWidth: 9,
         showArrows: true
     });
     */
@@ -340,7 +340,7 @@ function get_biography_info (data, container) {
     container.append(content);
     //content.text('hello');
     content.html('<p>' + data.info + '</p>');
-    content.css({textAlign: 'left', marginLeft: 16});
+    content.css({textAlign: 'left', marginLeft: 10});
 }
 
 function get_biography() {
@@ -371,7 +371,7 @@ function get_biography() {
         content.jScrollPane({
             arrowSize: 5,
             scrollbarOnLeft: true,
-            scrollbarWidth: 11,
+            scrollbarWidth: 9,
             showArrows: true
         });
         $('div#loader').hide();
