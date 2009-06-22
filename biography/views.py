@@ -4,7 +4,7 @@ from django.utils import simplejson
 from django.views.generic import list_detail
 from models import Award, Education, Exhibition, Biography
 
-def index(request):
+def json_index(request):
     award_d = award(request)
     education_d = education(request)
     exhibition_d = exhibition(request)
@@ -16,24 +16,26 @@ def index(request):
         exhibition = exhibition_d,
     ))
     return HttpResponse(json, mimetype='application/json')
-    return render_to_response('biography_div.html', dict(
-        award_details = award_d['details'],
-        award_years = award_d['years'],
-        education_details = education_d['details'],
-        education_years = education_d['years'],
-        exhibition_details = exhibition_d['details'],
-        exhibition_years = exhibition_d['years'],
+
+def index(request):
+    import re
+    pattern_start = re.compile('<[a-z]*>')
+    pattern_end = re.compile('</[a-z]*>')
+    #award_d = award(request)
+    #education_d = education(request)
+    #exhibition_d = exhibition(request)
+    award_d = Award.objects.all()
+    education_d = Education.objects.all()
+    exhibition_d = Exhibition.objects.all()
+    info_d = info(request)
+    info_d['info'] = pattern_start.sub('', info_d['info'])
+    info_d['info'] = pattern_end.sub('', info_d['info'])
+    return render_to_response('biography_index.html', dict(
+        info = info_d,
+        award = award_d,
+        education = education_d,
+        exhibition = exhibition_d,
     ))
-    return list_detail.object_list(
-            request,
-            queryset = Exhibition.objects.all(),
-            template_name = 'biography.html',
-            template_object_name = 'exhibitions',
-            extra_context = dict(
-                awards = Award.objects.all,
-                educations = Education.objects.all,
-            ),
-        )
 
 def award(request):
     details = {}

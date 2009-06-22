@@ -244,20 +244,20 @@ function get_biography_award(data, container) {
     var y = data.years;
     var yLen = y.length
     for (var cnt=0; cnt<yLen; ++cnt) {
-        var tr = $('<tr></tr>');
-        var td_l = $('<td class="cell-left"></td>');
-        var td_r = $('<td class="cell-right"></td>');
         var d = details[y[cnt]];
         var dLen = d.length
         for (var dcnt=0; dcnt<dLen; ++dcnt) {
+            var tr = $('<tr></tr>');
+            var td_l = $('<td class="cell-left"></td>');
+            var td_r = $('<td class="cell-right"></td>');
             tr.append(td_l);
             tr.append(td_r);
             td_l.append(d[dcnt].award);
             td_l.append('<br />');
             td_l.append(d[dcnt].location);
             td_r.append(y[cnt]);
+            table.append(tr);
         }
-        table.append(tr);
     }
     container.append(content);
 }
@@ -344,7 +344,8 @@ function get_biography_info (data, container) {
 }
 
 function get_biography() {
-    $('a').css({fontWeight: 'normal', color: '#333'});
+    $('#lyr1 a').css({fontWeight: 'normal', color: '#333'});
+    $('a').css({color: '#333'});
     $('#pagination').text('');
     $('#upload_details').text('');
     $('.sub-menu a').css({color: '#999'});
@@ -379,7 +380,8 @@ function get_biography() {
 }
 
 function get_upcoming() {
-    $('a').css({fontWeight: 'normal', color: '#333'});
+    $('#lyr1 a').css({fontWeight: 'normal', color: '#333'});
+    $('a').css({color: '#333'});
     $('#pagination').text('');
     $('.sub-menu a').css({color: '#999'});
     $('a#main_upcoming').css({color: '#000'});
@@ -398,7 +400,8 @@ function get_upcoming() {
 }
 
 function get_contact() {
-    $('a').css({fontWeight: 'normal', color: '#333'});
+    $('#lyr1 a').css({fontWeight: 'normal', color: '#333'});
+    $('a').css({color: '#333'});
     $('#pagination').text('');
     $('.sub-menu a').css({color: '#999'});
     $('a#main_contact').css({color: '#000'});

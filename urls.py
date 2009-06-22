@@ -17,7 +17,7 @@ urlpatterns = patterns('',
 
     # Custom routes
     #(r'^(.*)', 'laurenbrincat.work.views.index'),
-    #(r'^$', 'laurenbrincat.work.views.index'),
+    (r'^$', 'laurenbrincat.work.views.index'),
     (r'^work/page_detail', 'laurenbrincat.work.views.page_detail'),
     (r'^work/page_list', 'laurenbrincat.work.views.page_list'),
     (r'^work/$', 'laurenbrincat.work.views.index'),
@@ -27,7 +27,8 @@ urlpatterns = patterns('',
     #(r'^work/([^/?]+)/list$', 'laurenbrincat.work.views.page_list'),
     #(r'^work/([^/?]+)/(\d+)$', 'laurenbrincat.work.views.page_detail'),
     #(r'^work/([^/?]+)/(\d+)/$', 'laurenbrincat.work.views.page_detail'),
-    (r'^biography/$', 'laurenbrincat.biography.views.index'),
+    (r'^bio/$', 'laurenbrincat.biography.views.index'),
+    (r'^biography/$', 'laurenbrincat.biography.views.json_index'),
     (r'^biography/award$', 'laurenbrincat.biography.views.award'),
     (r'^biography/education$', 'laurenbrincat.biography.views.education'),
     (r'^biography/exhibition$', 'laurenbrincat.biography.views.exhibition'),
@@ -37,7 +38,7 @@ urlpatterns = patterns('',
 
     # Static route
     #(r'^$', 'django.views.generic.simple.redirect_to', {'url': 'index.html'}),
-    (r'^$', 'django.views.generic.simple.redirect_to', {'url': 'comingsoon.html'}),
+    #(r'^$', 'django.views.generic.simple.redirect_to', {'url': 'comingsoon.html'}),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/home/egcalso/Work/EnzymeIT/LaurenBrincat/laurenbrincat/media/'}),
     (r'^(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/home/egcalso/Work/EnzymeIT/LaurenBrincat/laurenbrincat/media/'}),
 
