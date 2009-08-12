@@ -98,7 +98,7 @@ function get_work_list(name) {
             span = $('<span></span>');
             a = $('<a style="line-height:1.6em;padding-left:8px" href="javascript: get_work(\'' + work.fields.name.replace(/'/g, "\\'") + '\')"></a>');
             if (name == work.fields.name) {
-                span.css({fontWeight: 'bold', color: '#000',});
+                span.css({fontWeight: 'bold', color: '#000'});
             } else {
                 span.css({fontWeight: 'normal'});
             }
