@@ -17,7 +17,8 @@ urlpatterns = patterns('',
 
     # Custom routes
     #(r'^(.*)', 'laurenbrincat.work.views.index'),
-    (r'^$', 'laurenbrincat.work.views.index'),
+    (r'^$', 'laurenbrincat.biography.views.index'),
+    (r'^oldhome/$', 'laurenbrincat.work.views.index'),
     (r'^work/page_detail', 'laurenbrincat.work.views.page_detail'),
     (r'^work/page_list', 'laurenbrincat.work.views.page_list'),
     (r'^work/$', 'laurenbrincat.work.views.index'),

@@ -1,0 +1,20 @@
+/**
+ * ieonly.css
+ * This is a custom style sheet for Internet Explorer
+ *
+ */
+
+#content_div {
+    top: 8px;
+}
+
+#content_div .jScrollPaneDrag {
+    left: -1px;
+}
+
+#content_div_bio {
+    margin-top: 0px;
+    margin-left: -450px;
+    padding-top: 4px;
+}
+
